@@ -25,7 +25,11 @@ const Store = createStore({
             })
         }
     },
-    getters: {},
+    getters: {
+        counterSquared(state) {
+            return state.counter * state.counter
+        }
+    },
     modules: {}
 
 })
