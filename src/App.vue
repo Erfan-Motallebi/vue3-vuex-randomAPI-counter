@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <h1>{{ $store.state.counter }}</h1>
+  <h1 :style="{ color: $store.state.colorCode }">{{ $store.state.counter }}</h1>
   <div class="counter-squared">
     {{ $store.state.counter }}
     <sup>2</sup>
@@ -11,11 +11,23 @@
     <button @click="$store.dispatch('increaseCounter')">+</button>
     <button @click="$store.dispatch('decreaseCounter')">-</button>
   </div>
+  <label for="text">SET COLOR: </label>
+  <input id="text" type="text" v-model="setColorCode" />
 </template>
 
 <script>
 export default {
   name: "App",
+  computed: {
+    setColorCode: {
+      get() {
+        return this.$store.state.colorCode;
+      },
+      set(newValue) {
+        this.$store.commit("setColorCode", newValue);
+      },
+    },
+  },
 };
 </script>
 
@@ -45,5 +57,8 @@ export default {
   color: red;
   display: inline-block;
   margin: 0 14px;
+}
+input[type|="text"] {
+  margin: 15px;
 }
 </style>

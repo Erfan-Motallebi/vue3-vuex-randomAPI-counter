@@ -4,6 +4,7 @@ import axios from 'axios';
 const Store = createStore({
     state: {
         counter: 0,
+        colorCode: 'purple',
     },
     mutations: {
         increaseCounter(state, randomAPI) {
@@ -11,6 +12,9 @@ const Store = createStore({
         },
         decreaseCounter(state, randomAPI) {
             state.counter -= randomAPI
+        },
+        setColorCode(state, newValue) {
+            state.colorCode = newValue;
         }
     },
     actions: {
